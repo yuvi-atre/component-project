@@ -8,6 +8,14 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+
+## [2025.02.03]
+
+### Added
+
+- Designed a Stock Trader component
+- Designed a Playing Card component
+- Designed a Minecraft Chest component
 ## [2024.12.30]
 
 - Added table-based rubrics to all 6 parts of the project
