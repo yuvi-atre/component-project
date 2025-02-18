@@ -186,8 +186,8 @@ will likely refine your design to make your implementation easier to use.
   - **Description**:
     - Tracks stocks current prices, trading volume, and symbol. The purpose of this model is to monitor stock data, update prices, and track stock data efficiently.
   - **Kernel Methods**:
-    - `void updatePrice(double updatedPrice)`: Updates the price of the stock
-    - `void updateVolume(int updatedVolume)`: Updates the stock trading volume
+    - `double updatePrice(double updatedPrice)`: Updates the price of the stock and returns the previous value
+    - `int updateVolume(int updatedVolume)`: Updates the stock trading volume and returns the previous value
     - `String symbol()`: Returns the symbol for the stock
   - **Secondary Methods**:
     - `double getPercentChange()`: Calculates and returns the % change of a stock's price
@@ -209,29 +209,30 @@ will likely refine your design to make your implementation easier to use.
 
 - Component Design #2: Playing Card
   - **Description**:
-    - This component keeps track of information of a playing card such as the suit and the value of it. This can be used for blackjack or poker.
+    - This component represents a full deck of playing cards, containing 52 cards of four suits and 13 ranks. It provides functionality for managing and interacting with a deck, such as shuffling, drawing, and checking the deck size. This can be used for games like blackjack or poker.
   - **Kernel Methods**:
-    - `String getRank()`: Returns the value of the card ("Ace", "10", "King")
-    - `String getSuit()`: Returns the suit of the card
-    - `boolean isFaceCard()`: Returns true if the card is a face card
+    - `PlayingCard drawCard()`: Removes and returns the top card from the deck
+    - `void addCard(PlayingCard card)`: Adds a card back into the deck
+    - `int size()`: Returns the number of playing cards in a deck
   - **Secondary Methods**:
-    - `int getValue()`: Returns numerical representation of card. (Ace = 1, face cards = 10)
-    - `boolean isSameSuit(PlayingCard card)`: Checks if 2 cards have the same suit
-    - `boolean isSameRank(PlayingCard card)`: Checks if 2 cards have the same rank
-    - `String toString()`: Returns the string representation ("Queen of Hearts")
+    - `void reset()`: Resets the deck to contain all 52 cards and shuffles it
+    - `void shuffle()`: Shuffles the deck randomly
+    - `Set<PlayingCard> drawMultiple(int numCards)`: Draws multiple cards from the deck
+    - `boolean contains(PlayingCard card)`: Checks if the deck contains a specific card
+    - `String toString()`: Returns a string representation of the deck, listing all remaining cards
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - No because playing cards don't change their values
+      - Yes, because the deck changes state when cards are drawn, added, or shuffled.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - I don't think it would need it because the card keeps track of itself.
+      - It would likely use a Set<PlayingCard> to store the cards
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - A constant for "Hearts, Diamonds, Clubs, Spades" would be useful
+      - Yes, for suits (Hearts, Diamonds, Clubs, Spades) and ranks (Ace, 2, ..., King)
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - Yes because `isSameSuit()` can use the `getSuit()` method
+      - Yes, for example, drawMultiple(int numCards) can call drawCard() multiple times
 
 - Component Design #3: Minecraft Chest
   - **Description**:
@@ -240,11 +241,14 @@ will likely refine your design to make your implementation easier to use.
     - `void addItem(String item, int quantity)`: Adds a certain number of items to the chest if there's space
     - `void removeItem(String item, int quantity)`: Remove a certain number of items if they're present
     - `boolean containsItem(String item)`: Checks if the chest has an item
-  - **Secondary Methods**:
-    - `int getItem(String item)`: Returns the number of that specified item in the chest
+    - `int itemQuantity(String item)`: Returns the quantity of the specified item
     - `boolean isFull()`: Returns if the chest is full or not
-    - `void clear()`: Resets the chest to a default state
+  - **Secondary Methods**:
     - `Map<String item, int count> getItems()`: Returns a map with the name of the item as the key and the count as the value
+    - `boolean canCraft(String... items)` : Returns whether or not the chest contains multiple items needed to craft a certain item
+    - `List<String< getItemsByQuantity(int minQuantity)` : Returns a list of all item names that have at least minQuantity stored in the chest
+    - `void clear()` : Removes all items from the chest, making it empty
+
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
