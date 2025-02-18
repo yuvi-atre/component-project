@@ -107,8 +107,7 @@ Below is further rationale/explanation for the rubric items above:
 > disclose that here as well.
 >
 > I will be choosing the minecraft Chest as the component design because I think it follows the OSU CSE discipline the closest with the kernel implementations and secondary methods. I also just like it the most out of the other designs I submitted in the brainstorming.
-<!-- TODO: briefly argue your choice of design or design somethi
-new; then delete this comment -->
+
 
 > Once you've argued your choice of design, make a branch in your new repo called
 > something like `proof-of-concept`. There are many ways to do this, but my
