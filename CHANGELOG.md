@@ -8,6 +8,13 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+## [2025.02.18]
+
+### Added
+
+- Updated Playing Card componenet to Card Deck
+- Rewrote return types for Stock Methdods
+- Rewrote kernel and secondary methods for Minecraft Chest
 
 ## [2025.02.03]
 
