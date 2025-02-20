@@ -265,8 +265,9 @@ public class MinecraftChest {
                 "Items with quantity >= 5: " + chest.getItemsByQuantity(five));
 
         // Demonstrating canCraft method
-        System.out.println("Can craft an iron sword (requires iron_ingot): "
-                + chest.canCraft("iron_ingot", "stick"));
+        System.out.println(
+                "Can craft an iron sword (requires iron_ingot and stick): "
+                        + chest.canCraft("iron_ingot", "stick"));
 
         //  Demonstrating getItems method
         System.out.println("Items in the chest: " + chest.getItems());
