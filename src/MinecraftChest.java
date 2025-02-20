@@ -1,4 +1,5 @@
 import components.list.List;
+import components.list.List2;
 import components.map.Map;
 import components.map.Map2;
 
@@ -167,14 +168,32 @@ public class MinecraftChest {
         return total;
     }
 
+    /**
+     * Returns the name of items in the chest that have a quantity greater than
+     * or equal to the specified amount.
+     *
+     * @param minQuantity
+     *            the minimum quantity of an item to retrieve
+     * @return a list of item names that have a quantity greater than or equal
+     *         to the specified amount
+     */
     public List<String> getItemsByQuantity(int minQuantity) {
-        List<String> items = new List1<String>();
+        List<String> items = new List2<String>();
         for (Map.Pair<String, Integer> item : this.items) {
-            if (item.value() >= minQuantity) {
-                items.add(item.key());
+            String itemName = item.key();
+            if (this.itemQuantity(itemName) >= minQuantity) {
+                items.addRightFront(itemName);
             }
         }
         return items;
+    }
+
+    /**
+     * Clears the chest of all items, resets chest to default state.
+     */
+    public void clear() {
+        this.items.clear();
+        this.size = 0;
     }
 
     /**
