@@ -181,7 +181,8 @@ public class MinecraftChest {
         List<String> items = new List2<String>();
         for (Map.Pair<String, Integer> item : this.items) {
             String itemName = item.key();
-            if (this.itemQuantity(itemName) >= minQuantity) {
+            if (this.containsItem(itemName)
+                    && this.itemQuantity(itemName) >= minQuantity) {
                 items.addRightFront(itemName);
             }
         }
