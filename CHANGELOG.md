@@ -8,12 +8,24 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+## [2025.02.20]
+
+### Added
+
+- Designed a proof of concept for MinecraftChest component
+
+### Updated
+
+- Changed design to include different private members such as `maxSize` and `size` (current size) variable
+- Changed removeItem kernel method to return type `Map.Pair<String, Integer>`
+- Added new secondary method `totalItems()`
+
 ## [2025.02.18]
 
 ### Added
 
 - Updated Playing Card componenet to Card Deck
-- Rewrote return types for Stock Methdods
+- Rewrote return types for Stock Methods
 - Rewrote kernel and secondary methods for Minecraft Chest
 
 ## [2025.02.03]
