@@ -89,14 +89,27 @@ public class MinecraftChest {
         return removed;
     }
 
+    /**
+     * Checks the chest for the specified item.
+     *
+     * @param item
+     *            the name of the item to check for
+     * @return true if the chest contains the item, false otherwise
+     */
     public boolean containsItem(String item) {
-        // Check if the chest contains the item
-        return this.size >= this.maxSize;
+        return this.items.hasKey(item);
     }
 
+    /**
+     * Returns the quantity of the specified item in the chest.
+     *
+     * @requires item is in the chest
+     * @param item
+     *            the name of the item to check for
+     * @return the quantity of the item in the chest
+     */
     public int itemQuantity(String item) {
-        // Get the quantity of the item in the chest
-        return 0;
+        return this.items.value(item);
     }
 
     public boolean isFull() {
