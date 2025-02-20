@@ -246,7 +246,7 @@ will likely refine your design to make your implementation easier to use.
   - **Secondary Methods**:
     - `Map<String item, int count> getItems()`: Returns a map with the name of the item as the key and the count as the value
     - `boolean canCraft(String... items)` : Returns whether or not the chest contains multiple items needed to craft a certain item
-    - `List<String< getItemsByQuantity(int minQuantity)` : Returns a list of all item names that have at least minQuantity stored in the chest
+    - `List<String> getItemsByQuantity(int minQuantity)` : Returns a list of all item names that have at least minQuantity stored in the chest
     - `void clear()` : Removes all items from the chest, making it empty
 
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
