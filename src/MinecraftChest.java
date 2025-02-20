@@ -64,8 +64,8 @@ public class MinecraftChest {
             this.items.replaceValue(item, this.items.value(item) + quantity);
         } else {
             this.items.add(item, quantity);
+            this.size++;
         }
-        this.size++;
     }
 
     /**
@@ -203,6 +203,78 @@ public class MinecraftChest {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("Minecraft Chest");
+        MinecraftChest chest = new MinecraftChest();
+
+        final int five = 5;
+        final int ten = 10;
+
+        // Demonstrating add method
+        System.out.println("Adding 5 iron ingots to the chest.");
+        chest.addItem("iron_ingot", five); // Adds 5 iron ingots
+        System.out.println("Chest contains " + chest.totalItems() + " items.");
+
+        System.out.println("Adding 10 gold ingots to the chest.");
+        chest.addItem("gold_ingot", ten); // Adds 10 gold ingots
+        System.out.println("Chest contains " + chest.totalItems() + " items.");
+
+        System.out.println("Adding 5 iron ingots to the chest.");
+        chest.addItem("iron_ingot", five); // Adds 5 iron ingots
+        System.out.println("Chest contains " + chest.totalItems() + " items.");
+
+        // Demonstrating remove method
+        System.out.println("Does the chest contain iron ingots? "
+                + chest.containsItem("iron_ingot"));
+        System.out.println("Does the chest contain diamonds? "
+                + chest.containsItem("diamond"));
+
+        // Demonstrating containsItem method and itemQuantity method
+        if (chest.containsItem("iron_ingot")) {
+            System.out.println("Quantity of iron ingots: "
+                    + chest.itemQuantity("iron_ingot"));
+        }
+
+        // Demonstrating isFull method
+        System.out.println("Is the chest full? " + chest.isFull());
+
+        // Remove some items from the chest
+        String itemToRemove = "iron_ingot";
+        final int quantityToRemove = 3;
+
+        // Demonstrating multiple methods
+        if (chest.containsItem(itemToRemove)) {
+            int currentQuantity = chest.itemQuantity(itemToRemove);
+            if (quantityToRemove <= currentQuantity) {
+                System.out.println("Removing " + quantityToRemove
+                        + " iron ingots from the chest.");
+                chest.removeItem(itemToRemove, quantityToRemove); // Removes 3 iron ingots
+                System.out.println("Quantity of iron ingots left: "
+                        + chest.itemQuantity(itemToRemove));
+            } else {
+                System.out.println("Not enough " + itemToRemove
+                        + " to remove. Current quantity: " + currentQuantity);
+            }
+        } else {
+            System.out.println(itemToRemove + " not found in the chest.");
+        }
+
+        // Demonstrating getItemsByQuantity method
+        System.out.println("Total items in the chest: " + chest.totalItems());
+
+        // Demonstrating getItemsByQuantity method
+        System.out.println(
+                "Items with quantity >= 5: " + chest.getItemsByQuantity(five));
+
+        // Demonstrating canCraft method
+        System.out.println("Can craft an iron sword (requires iron_ingot): "
+                + chest.canCraft("iron_ingot", "stick"));
+
+        //  Demonstrating getItems method
+        System.out.println("Items in the chest: " + chest.getItems());
+
+        // Demonstrating clear method
+        System.out.println("Clearing the chest...");
+        chest.clear();
+        System.out.println("Chest contains " + chest.totalItems()
+                + " items after clearing.");
     }
 }
