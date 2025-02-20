@@ -210,7 +210,7 @@ public class MinecraftChest {
 
         // Demonstrating add method
         System.out.println("Adding 5 iron ingots to the chest.");
-        chest.addItem("iron_ingot", five); // Adds 5 iron ingots
+        chest.addItem("ironIngot", five); // Adds 5 iron ingots
         System.out.println("Chest contains " + chest.totalItems() + " items.");
 
         System.out.println("Adding 10 gold ingots to the chest.");
@@ -218,26 +218,26 @@ public class MinecraftChest {
         System.out.println("Chest contains " + chest.totalItems() + " items.");
 
         System.out.println("Adding 5 iron ingots to the chest.");
-        chest.addItem("iron_ingot", five); // Adds 5 iron ingots
+        chest.addItem("ironIngot", five); // Adds 5 iron ingots
         System.out.println("Chest contains " + chest.totalItems() + " items.");
 
         // Demonstrating remove method
         System.out.println("Does the chest contain iron ingots? "
-                + chest.containsItem("iron_ingot"));
+                + chest.containsItem("ironIngot"));
         System.out.println("Does the chest contain diamonds? "
                 + chest.containsItem("diamond"));
 
         // Demonstrating containsItem method and itemQuantity method
-        if (chest.containsItem("iron_ingot")) {
+        if (chest.containsItem("ironIngot")) {
             System.out.println("Quantity of iron ingots: "
-                    + chest.itemQuantity("iron_ingot"));
+                    + chest.itemQuantity("ironIngot"));
         }
 
         // Demonstrating isFull method
         System.out.println("Is the chest full? " + chest.isFull());
 
         // Remove some items from the chest
-        String itemToRemove = "iron_ingot";
+        String itemToRemove = "ironIngot";
         final int quantityToRemove = 3;
 
         // Demonstrating multiple methods
@@ -266,8 +266,8 @@ public class MinecraftChest {
 
         // Demonstrating canCraft method
         System.out.println(
-                "Can craft an iron sword (requires iron_ingot and stick): "
-                        + chest.canCraft("iron_ingot", "stick"));
+                "Can craft an iron sword (requires ironIngot and stick): "
+                        + chest.canCraft("ironIngot", "stick"));
 
         //  Demonstrating getItems method
         System.out.println("Items in the chest: " + chest.getItems());
