@@ -1,3 +1,4 @@
+import components.list.List;
 import components.map.Map;
 import components.map.Map2;
 
@@ -112,9 +113,13 @@ public class MinecraftChest {
         return this.items.value(item);
     }
 
+    /**
+     * Returns whether or not the chest is full.
+     *
+     * @return true if the chest is full, false otherwise
+     */
     public boolean isFull() {
-        // Check if the chest is full
-        return false;
+        return this.size == this.maxSize;
     }
 
     /*
@@ -122,12 +127,54 @@ public class MinecraftChest {
      * ---------------------------------------------------------
      */
 
-    public Map2<String, Integer> getItems() {
+    /**
+     * Retrieves the items stored in the chest.
+     *
+     * @return a map where the keys are item names and the values are the
+     *         quantities of each item.
+     */
+    public Map<String, Integer> getItems() {
         return this.items;
     }
 
+    /**
+     * Checks whether the chest can contains the specified items.
+     *
+     * @param items
+     * @return true if the chest contains the items, false otherwise
+     */
     public boolean canCraft(String... items) {
+        boolean canCraft = true;
+        for (String item : items) {
+            if (!this.containsItem(item)) {
+                canCraft = false;
+            }
+        }
+        return canCraft;
+    }
 
+    /**
+     * Counts all the items in the chest.
+     *
+     * @return the total number of items in the chest
+     */
+    public int totalItems() {
+        // This made more sense with hashMaps because I could call the keySet method
+        int total = 0;
+        for (Map.Pair<String, Integer> item : this.items) {
+            total += this.itemQuantity(item.key());
+        }
+        return total;
+    }
+
+    public List<String> getItemsByQuantity(int minQuantity) {
+        List<String> items = new List1<String>();
+        for (Map.Pair<String, Integer> item : this.items) {
+            if (item.value() >= minQuantity) {
+                items.add(item.key());
+            }
+        }
+        return items;
     }
 
     /**
