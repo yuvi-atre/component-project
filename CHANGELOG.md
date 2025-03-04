@@ -8,6 +8,17 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+## [2025.03.04]
+
+### Added
+
+- Designed kernel and enhanced interfaces for MChest component
+
+### Updated
+
+- Component is now called MChest instead of MinecraftChest
+- Changed design to include more descriptive javadocs
+
 ## [2025.02.18]
 
 ### Added
