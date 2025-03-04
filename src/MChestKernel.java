@@ -11,6 +11,7 @@ import components.standard.Standard;
  *            of items of that type in the chest.
  */
 public interface MChestKernel extends Standard<MChest> {
+
     /**
      * Adds an item to the chest. If the item already exists, its quantity is
      * increased.
@@ -21,7 +22,7 @@ public interface MChestKernel extends Standard<MChest> {
      *            the quantity of the item to add
      * @updates this
      * @requires isFull() = false
-     * @ensures item is added to the chest with the specified quantity
+     * @ensures the item is added to the chest with the specified quantity
      */
     void addItem(String item, int quantity);
 
