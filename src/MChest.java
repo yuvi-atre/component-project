@@ -3,7 +3,8 @@ package components.minecraftchest;
 import components.list.List;
 import components.map.Map;
 
-public interface MinecraftChest extends Comparable<MChest>, MChestKernel {
+public interface MChest extends Comparable<MChest>, MChestKernel {
+
     /**
      * Retrieves the items stored in the chest.
      *
@@ -50,7 +51,10 @@ public interface MinecraftChest extends Comparable<MChest>, MChestKernel {
     public List<String> getItemsByQuantity(int minQuantity);
 
     /**
+     * Clears the chest of all items, resetting the chest to its default state.
+     *
      * @ensures the chest is empty after the method call
+     * @clears this
      */
     @Override
     public void clear();
