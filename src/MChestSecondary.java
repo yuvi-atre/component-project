@@ -77,8 +77,7 @@ public abstract class MChestSecondary implements MChest {
     // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
     @Override
     public boolean equals(Object obj) {
-        return obj == this
-                || (obj instanceof MChest
+        return obj == this || (obj instanceof MChest
                 && this.getItems().equals(((MChest) obj).getItems()));
     }
 
