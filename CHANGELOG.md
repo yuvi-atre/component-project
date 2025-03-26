@@ -8,6 +8,12 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+## [2025.03.26]
+
+### Added
+
+- Designed secondary methods for MChest component
+
 ## [2025.03.04]
 
 ### Added
