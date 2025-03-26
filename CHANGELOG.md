@@ -12,7 +12,12 @@ the following form: YYYY.0M.0D.
 
 ### Added
 
-- Designed secondary methods for MChest component
+- Designed abstract class for MChest component
+
+### Updated
+
+- Changed design to include Object methods such as `toString()`, `equals()`,
+and `hashCode()`
 
 ## [2025.03.04]
 
