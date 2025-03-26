@@ -8,17 +8,16 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
-## [2025.02.20]
+## [2025.03.04]
 
 ### Added
 
-- Designed a proof of concept for MinecraftChest component
+- Designed kernel and enhanced interfaces for MChest component
 
 ### Updated
 
-- Changed design to include different private members such as `maxSize` and `size` (current size) variable
-- Changed removeItem kernel method to return type `Map.Pair<String, Integer>`
-- Added new secondary method `totalItems()`
+- Component is now called MChest instead of MinecraftChest
+- Changed design to include more descriptive javadocs
 
 ## [2025.02.18]
 
