@@ -167,7 +167,6 @@ public class MChestOnMap extends MChestSecondary {
 
     // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
     @Override
-    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
     public MChest newInstance() {
         return new MChestOnMap();
     }
