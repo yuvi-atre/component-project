@@ -157,7 +157,7 @@ public class MChestOnMap extends MChestSecondary {
         assert other != null : "Violation of: other chest is not null";
         MChestOnMap localSource = (MChestOnMap) other;
         this.items = localSource.items;
-        // TODO: call createNewRep on other
+        localSource.createNewRep(); // Reset the source chest
     }
 
     // Implementing Comparable<MChest> method
