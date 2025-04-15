@@ -32,6 +32,15 @@ public class MChestOnMap extends MChestSecondary {
      */
     private Map<String, Integer> items;
 
+    /**
+     * Creator of initial representation.
+     */
+    private void createNewRep() {
+
+        this.items = new Map2<>();
+
+    }
+
     /*
      * Constructors -----------------------------------------------------------
      */
@@ -42,7 +51,7 @@ public class MChestOnMap extends MChestSecondary {
      * @ensures this = {}
      */
     public MChestOnMap() {
-        this.items = new Map2<>();
+        this.createNewRep();
     }
 
     /*
