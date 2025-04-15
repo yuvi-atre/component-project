@@ -181,12 +181,7 @@ public class MChestOnMap extends MChestSecondary {
     @Override
     public void transferFrom(MChest other) {
         assert other != null : "Violation of: other chest is not null";
-        Map<String, Integer> otherItems = other.getItems();
-        for (Map.Pair<String, Integer> pair : otherItems) {
-            String item = pair.key();
-            int quantity = pair.value();
-            this.addItem(item, quantity); // Add each item to this chest
-        }
+        this.items = other.getItems();
     }
 
     // Implementing Comparable<MChest> method
