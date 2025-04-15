@@ -129,46 +129,52 @@ public class MChestOnMap extends MChestSecondary {
         this.items = new Map2<>(); // Reset the chest to an empty state
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        String result = "MChest: ";
-        for (Map.Pair<String, Integer> pair : this.items) {
-            result += "[" + pair.key() + ", " + pair.value() + "] ";
-        }
-        return result.trim();
-    }
+    // Maybe delete these
+    // /**
+    //  * {@inheritDoc}
+    //  */
+    // @Override
+    // public String toString() {
+    //     String result = "MChest: ";
+    //     for (Map.Pair<String, Integer> pair : this.items) {
+    //         result += "[" + pair.key() + ", " + pair.value() + "] ";
+    //     }
+    //     return result.trim();
+    // }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj instanceof MChest) {
-            return this.items.equals(((MChest) obj).getItems());
-        }
-        return false;
-    }
+    // /**
+    //  * {@inheritDoc}
+    //  */
+    // @Override
+    // public boolean equals(Object obj) {
+    //     if (obj == this) {
+    //         return true;
+    //     }
+    //     if (obj instanceof MChest) {
+    //         return this.items.equals(((MChest) obj).getItems());
+    //     }
+    //     return false;
+    // }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
-        return this.items.hashCode();
-    }
+    // /**
+    //  * {@inheritDoc}
+    //  */
+    // @Override
+    // public int hashCode() {
+    //     return this.items.hashCode();
+    // }
 
     // Implementing Standard<MChest> methods
 
     // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
     @Override
     public MChest newInstance() {
-        return new MChestOnMap();
+        try {
+            return this.getClass().getConstructor().newInstance();
+        } catch (ReflectiveOperationException e) {
+            throw new AssertionError(
+                    "Cannot construct object of type " + this.getClass());
+        }
     }
 
     // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
