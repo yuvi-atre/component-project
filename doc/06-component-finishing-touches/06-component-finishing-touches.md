@@ -303,22 +303,26 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-Before this project, I had a more abstract understanding of software development — mostly from writing isolated methods, working with contrived test cases, or focusing on one concept at a time. But after completing the portfolio project, I feel like I’ve gained a much deeper and more realistic understanding of what actual software development is like.
+Before this project, I had a more abstract understanding of software development — mostly from writing isolated methods, working with test cases, or focusing on one concept at a time. But after completing the portfolio project, I feel like I’ve gained a much deeper and more realistic understanding of what actual software development is like.
 
-Having to implement a full component from interfaces to a working class (and then test and demo it) showed me how important things like abstraction, modularity, and documentation really are. I also saw firsthand how a small design decision early on — like how I chose to store data — rippled through every part of my implementation, testing, and even use cases.
+Having to implement a full component from interfaces to a working class (and then test and demo it) showed me how important things like abstraction, modularity, and documentation really are. I also saw firsthand how a small design decision early on, like how I chose to store data, through every part of my implementation, testing, and even use cases.
 
-Even the frustrating parts, like weird preconditions or the inability to directly instantiate something like a Pair, actually felt real — in the sense that in real-world development, you're constantly working within constraints. It taught me how to think in terms of designing for reuse and clarity, not just getting code to compile.
+Even the frustrating parts, like weird preconditions or the inability to directly instantiate something like a Pair, actually felt real in the sense that in real-world development, you're constantly working within constraints. It taught me how to think in terms of designing for reuse and clarity, not just getting code to compile.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+One gap was with testing, especially without a reference implementation. Writing meaningful, self-validating tests felt much harder than before, and I realized I relied a lot on being able to compare against a known "correct" version. I had to really think through what made a test valid and not just syntactically correct.
+
+To address these gaps, I asked questions, re-read specs, walked through the code manually, and tested incrementally to catch bugs early. I also leaned more heavily on the actual behavior of the data structures, especially things like the OSU Map and List, which helped me understand how abstract behavior translates into implementation.
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+No, my perspective on software development hasn’t really changed and honestly, I’ve realized it’s not something I really enjoy. Working through the portfolio project made me see that while I can do the coding and follow the structure, I don’t find the actual process of implementing and debugging code all that fulfilling.
+
+Things like figuring out how the abstract class connects to everything or dealing with weird behavior in testing just felt more frustrating than interesting. It felt like I was following a pattern more than solving a problem I cared about. So while I’ve gained a better understanding of what software development looks like, I don’t see myself enjoying it long-term, at least not in a purely technical role.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -326,29 +330,43 @@ Even the frustrating parts, like weird preconditions or the inability to directl
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+One of the biggest skills I picked up during this project was learning how to navigate ambiguity. A lot of the component structure, especially the role of the abstract class wasn’t immediately clear to me, so I had to figure things out by experimenting, rereading specs, and tracing behavior step-by-step. That built my problem-solving and debugging skills, but also forced me to become more comfortable not having all the answers up front.
+
+On the software side, I definitely got better at writing test cases without a reference implementation. It pushed me to think more critically about what “correct” behavior looks like and how to verify it through state inspection. I also gained a deeper understanding of layered design like how interfaces, abstract classes, and concrete classes all serve different purposes in building reusable components.
+
+Outside of software, I improved at managing breaking the project down into chunks, figuring out what to test when, and documenting as I went. That project management mindset is something I know will be useful beyond just code.
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+Developed and debugged modular software components using interface-based design and abstraction layers (interface, abstract class, and kernel implementation)
+
+Wrote and executed comprehensive JUnit test cases without a reference implementation, verifying functionality through internal state inspection
+
+Gained experience troubleshooting recursive logic, class structure design, and cursor-based data structures (e.g., OSU CSE List and Map)
+
+Strengthened self-directed learning by resolving ambiguous technical specifications through experimentation and iterative debugging
+
+Practiced versionless project management: organizing complex tasks, sequencing implementation and testing, and documenting progress independently
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+Working on this project actually made me realize that I don’t enjoy traditional software development as much as I thought I might. The technical side, especially debugging recursive logic or navigating abstract class structure felt more tedious than rewarding for me. It’s not that I can't do the work, but I just didn’t find it fulfilling.
+
+Instead, it confirmed that I’m more interested in hybrid roles where I can still use my technical background, but apply it in a more strategic or people-oriented way like product management. I found myself more curious about how this component might be used in a real application or how to explain its value to someone else, rather than the coding itself. So while I didn’t enjoy the topic I picked in terms of implementation, it was valuable in helping me refine where I actually want to take my career.
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+To continue on my current career trajectory which is leaning more toward a hybrid CS + business role like product management, I think a good next step would be to get more experience with cross-functional projects. That might mean working on student-led product teams, internships that involve both technical and user-centered thinking, or case competitions that simulate real product decision-making. I’d also like to focus more on improving my communication and stakeholder management skills, since those are critical for product roles.
+
+In terms of mentorship, I could reach out to upperclassmen who’ve done product management internships or are in related IBE tracks. My former internship mentors, who’ve had a mix of engineering and business responsibilities. They could help me understand what skills to build next and how to position myself moving forward.
 
 ### Changelog
-
-<!-- TODO: update CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -435,7 +453,5 @@ PDF to read this rubric as a table).
 If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
-
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [survey]: https://forms.gle/dumXHo6A4Enucdkq9
