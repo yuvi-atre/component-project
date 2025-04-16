@@ -87,18 +87,21 @@ public class MChestOnMap extends MChestSecondary {
         assert this.containsItem(item) : "Violation of: item is in the chest";
 
         int currentQuantity = this.itemQuantity(item);
+        Map.Pair<String, Integer> removedPair;
 
         if (currentQuantity <= quantity) {
-            Map.Pair<String, Integer> removedPair = this.items.remove(item);
-            return removedPair;
+            removedPair = this.items.remove(item); // Fully remove the item
         } else {
-            // Not gonna lie I didn't know how to bypass not making an instance
-            // of Map.Pair so that's why it's scuffed
-            this.items.remove(item);
-            this.items.add(item, currentQuantity - quantity);
-            Map.Pair<String, Integer> removedPair = this.items.remove(item);
-            return removedPair;
+            // Remove original pair to access the key
+            Map.Pair<String, Integer> originalPair = this.items.remove(item);
+            this.items.add(originalPair.key(), currentQuantity - quantity);
+            // Return a dummy pair using a temporary map
+            Map<String, Integer> tempMap = new Map2<>();
+            tempMap.add(originalPair.key(), quantity);
+            removedPair = tempMap.remove(originalPair.key());
         }
+
+        return removedPair;
     }
 
     /**
