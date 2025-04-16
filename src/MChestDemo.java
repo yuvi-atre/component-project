@@ -3,18 +3,41 @@ import components.list.List;
 import components.mchest.MChest;
 import components.mchest.MChestOnMap;
 
-public class MChestDemo {
+/**
+ * Demonstrates the usage of the MChest class and its functionalities. This is a
+ * utility class and should not be instantiated.
+ */
+public final class MChestDemo {
 
+        // Private constructor to prevent instantiation
+        /**
+         * Private constructor to prevent instantiation of this utility class.
+         */
+        private MChestDemo() {
+                throw new UnsupportedOperationException("Utility class");
+        }
+
+        /**
+         * The main method to demonstrate the functionalities of the MChest
+         * class.
+         *
+         * @param args
+         *                Command-line arguments (not used).
+         */
         public static void main(String[] args) {
                 System.out.println("=== MINECRAFT CHEST DEMO ===");
+
+                final int five = 5;
+                final int three = 3;
+                final int ten = 10;
 
                 MChest chest = new MChestOnMap();
 
                 System.out.println("\n[1] Adding Items:");
-                chest.addItem("iron", 5);
+                chest.addItem("iron", five);
                 chest.addItem("diamond", 2);
-                chest.addItem("stick", 3);
-                chest.addItem("gold", 10);
+                chest.addItem("stick", three);
+                chest.addItem("gold", ten);
                 System.out.println("Contents: " + chest);
 
                 System.out.println("\n[2] Checking item quantity:");
@@ -28,7 +51,7 @@ public class MChestDemo {
                                 + chest.containsItem("emerald"));
 
                 System.out.println("\n[4] Removing items:");
-                chest.removeItem("gold", 5);
+                chest.removeItem("gold", five);
                 System.out.println("Removed 5 gold. New contents: " + chest);
 
                 System.out.println("\n[5] Checking if chest is full:");
@@ -54,12 +77,13 @@ public class MChestDemo {
                 System.out.println(chest.toString());
 
                 System.out.println(
-                                "\n[11] Creating another identical chest and comparing with equals:");
+                                "\n[11] Creating another identical chest and "
+                                                + "comparing with equals:");
                 MChest otherChest = new MChestOnMap();
-                otherChest.addItem("iron", 5);
+                otherChest.addItem("iron", five);
                 otherChest.addItem("diamond", 2);
-                otherChest.addItem("stick", 3);
-                otherChest.addItem("gold", 5); // matches chest after removing 5 earlier
+                otherChest.addItem("stick", three);
+                otherChest.addItem("gold", five);
                 System.out.println("Is equal to other chest? "
                                 + chest.equals(otherChest));
 
