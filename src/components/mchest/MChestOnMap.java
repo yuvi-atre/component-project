@@ -140,6 +140,14 @@ public class MChestOnMap extends MChestSecondary {
         this.items = new Map2<>(); // Reset the chest to an empty state
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Map<String, Integer> getItemsRep() {
+        return this.items;
+    }
+
     // Implementing Standard<MChest> methods
 
     // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN

@@ -11,11 +11,18 @@ import components.map.Map2;
  */
 public abstract class MChestSecondary implements MChest {
 
+    /**
+     * Gives access to the internal items map.
+     *
+     * @return the internal Map representation of the chest
+     */
+    protected abstract Map<String, Integer> getItemsRep();
+
     // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
     @Override
     public Map<String, Integer> getItems() {
         Map<String, Integer> itemsCopy = new Map2<>();
-        for (Pair<String, Integer> pair : this.getItems()) {
+        for (Pair<String, Integer> pair : this.getItemsRep()) {
             itemsCopy.add(pair.key(), pair.value());
         }
         return itemsCopy;
