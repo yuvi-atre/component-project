@@ -303,7 +303,11 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+Before this project, I had a more abstract understanding of software development — mostly from writing isolated methods, working with contrived test cases, or focusing on one concept at a time. But after completing the portfolio project, I feel like I’ve gained a much deeper and more realistic understanding of what actual software development is like.
+
+Having to implement a full component from interfaces to a working class (and then test and demo it) showed me how important things like abstraction, modularity, and documentation really are. I also saw firsthand how a small design decision early on — like how I chose to store data — rippled through every part of my implementation, testing, and even use cases.
+
+Even the frustrating parts, like weird preconditions or the inability to directly instantiate something like a Pair, actually felt real — in the sense that in real-world development, you're constantly working within constraints. It taught me how to think in terms of designing for reuse and clarity, not just getting code to compile.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
