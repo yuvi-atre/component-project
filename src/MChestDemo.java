@@ -61,7 +61,8 @@ public final class MChestDemo {
                 System.out.println("Total items: " + chest.totalItems());
 
                 System.out.println("\n[7] Getting items by quantity (>= 3):");
-                List<String> highQuantityItems = chest.getItemsByQuantity(3);
+                List<String> highQuantityItems = chest
+                                .getItemsByQuantity(three);
                 for (String item : highQuantityItems) {
                         System.out.println("- " + item);
                 }
