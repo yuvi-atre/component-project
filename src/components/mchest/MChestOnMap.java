@@ -68,11 +68,11 @@ public class MChestOnMap extends MChestSecondary {
         assert item != null : "Violation of: item is not null";
         assert quantity > 0 : "Violation of: quantity > 0";
 
-        if (this.containsItem(item)) {
-            // If item exists, update the quantity
-            this.items.add(item, this.itemQuantity(item) + quantity);
+        if (this.items.hasKey(item)) {
+            int currentQty = this.items.value(item);
+            this.items.remove(item);
+            this.items.add(item, currentQty + quantity);
         } else {
-            // If item doesn't exist, add it to the chest
             this.items.add(item, quantity);
         }
     }
