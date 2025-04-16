@@ -8,39 +8,59 @@ import org.junit.Test;
 
 import components.list.List;
 
+/**
+ * Unit tests for the MChest class and its functionalities.
+ */
 public class MChestTest {
 
     /*
-     * canCraft
+     * canCraft tests
+     */
+
+    /**
+     * Tests the canCraft method when all required items are present.
      */
     @Test
-    public void testCanCraft_True() {
+    public void testCanCraftTrue() {
         MChest chest = new MChestOnMap();
         chest.addItem("wood", 2);
         chest.addItem("string", 1);
         assertTrue(chest.canCraft("wood", "string"));
     }
 
+    /**
+     * Tests the canCraft method when a required item is missing.
+     */
     @Test
-    public void testCanCraft_False_MissingItem() {
+    public void testCanCraftFalseMissingItem() {
         MChest chest = new MChestOnMap();
         chest.addItem("wood", 2);
-        assertFalse(chest.canCraft("wood", "string")); // missing "string"
+        assertFalse(chest.canCraft("wood", "string"));
     }
 
     /*
-     * totalItems
+     * totalItems tests
+     */
+
+    /**
+     * Tests the totalItems method when the chest contains multiple items.
      */
     @Test
-    public void testTotalItems_MultipleItems() {
+    public void testTotalItemsMultipleItems() {
         MChest chest = new MChestOnMap();
-        chest.addItem("stone", 3);
-        chest.addItem("torch", 7);
-        assertEquals(10, chest.totalItems());
+        final int three = 3;
+        final int seven = 7;
+        final int ten = 10;
+        chest.addItem("stone", three);
+        chest.addItem("torch", seven);
+        assertEquals(ten, chest.totalItems());
     }
 
+    /**
+     * Tests the totalItems method when the chest is empty.
+     */
     @Test
-    public void testTotalItems_EmptyChest() {
+    public void testTotalItemsEmptyChest() {
         MChest chest = new MChestOnMap();
         assertEquals(0, chest.totalItems());
     }
