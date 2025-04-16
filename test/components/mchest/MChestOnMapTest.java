@@ -22,8 +22,9 @@ public class MChestOnMapTest {
     @Test
     public void testAddNewItem() {
         MChest chest = new MChestOnMap();
-        chest.addItem("diamond", 3);
-        assertEquals(3, chest.itemQuantity("diamond"));
+        final int three = 3;
+        chest.addItem("diamond", three);
+        assertEquals(three, chest.itemQuantity("diamond"));
     }
 
     /**
@@ -33,9 +34,11 @@ public class MChestOnMapTest {
     @Test
     public void testAddExistingItem() {
         MChest chest = new MChestOnMap();
-        chest.addItem("iron", 5);
+        final int five = 5;
+        final int seven = 7;
+        chest.addItem("iron", five);
         chest.addItem("iron", 2);
-        assertEquals(7, chest.itemQuantity("iron"));
+        assertEquals(seven, chest.itemQuantity("iron"));
     }
 
     // Remove item tests
@@ -47,10 +50,11 @@ public class MChestOnMapTest {
     @Test
     public void testRemoveFullQuantity() {
         MChest chest = new MChestOnMap();
-        chest.addItem("gold", 4);
-        Pair<String, Integer> removed = chest.removeItem("gold", 4);
+        final int four = 4;
+        chest.addItem("gold", four);
+        Pair<String, Integer> removed = chest.removeItem("gold", four);
         assertEquals("gold", removed.key());
-        assertEquals(4, (int) removed.value());
+        assertEquals(four, (int) removed.value());
         assertFalse(chest.containsItem("gold"));
     }
 
@@ -61,9 +65,12 @@ public class MChestOnMapTest {
     @Test
     public void testRemovePartialQuantity() {
         MChest chest = new MChestOnMap();
-        chest.addItem("emerald", 10);
-        chest.removeItem("emerald", 4);
-        assertEquals(6, chest.itemQuantity("emerald"));
+        final int ten = 10;
+        final int four = 4;
+        final int six = 6;
+        chest.addItem("emerald", ten);
+        chest.removeItem("emerald", four);
+        assertEquals(six, chest.itemQuantity("emerald"));
     }
 
     // isFull tests
@@ -75,7 +82,8 @@ public class MChestOnMapTest {
     @Test
     public void testIsFullFalse() {
         MChest chest = new MChestOnMap();
-        chest.addItem("stone", 500);
+        final int size = 500;
+        chest.addItem("stone", size);
         assertFalse(chest.isFull());
     }
 
@@ -86,7 +94,8 @@ public class MChestOnMapTest {
     @Test
     public void testIsFullTrue() {
         MChest chest = new MChestOnMap();
-        chest.addItem("stone", 1000);
+        final int size = 1000;
+        chest.addItem("stone", size);
         assertTrue(chest.isFull());
     }
 }
