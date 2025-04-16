@@ -8,6 +8,17 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+## [2025.04.16]
+
+### Added
+
+- Designed test suite for MChest component
+- Designed two different use cases for MChest component
+
+### Updated
+
+- Changed design to handle errors in both `addItem()` and `removeItem()` methods
+
 ## [2025.04.09]
 
 ### Added
