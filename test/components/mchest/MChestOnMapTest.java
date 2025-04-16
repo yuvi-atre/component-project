@@ -14,10 +14,10 @@ import components.map.Map.Pair;
  */
 public class MChestOnMapTest {
 
-    // Add item tests
+    // --- Add Item Tests ---
 
     /**
-     * Tests if adding a new item to the chest updates the quantity correctly.
+     * Tests adding a new item to the chest.
      */
     @Test
     public void testAddNewItem() {
@@ -28,24 +28,37 @@ public class MChestOnMapTest {
     }
 
     /**
-     * Tests if adding an existing item to the chest updates the quantity
-     * correctly.
+     * Tests adding to an existing item in the chest.
      */
     @Test
     public void testAddExistingItem() {
         MChest chest = new MChestOnMap();
         final int five = 5;
+        final int two = 2;
         final int seven = 7;
         chest.addItem("iron", five);
-        chest.addItem("iron", 2);
+        chest.addItem("iron", two);
         assertEquals(seven, chest.itemQuantity("iron"));
     }
 
-    // Remove item tests
+    /**
+     * Tests adding items to reach the chest’s full capacity.
+     */
+    @Test
+    public void testAddItemToReachFull() {
+        MChest chest = new MChestOnMap();
+        final int almostFull = 999;
+        final int one = 1;
+        chest.addItem("feather", almostFull);
+        assertFalse(chest.isFull());
+        chest.addItem("stick", one);
+        assertTrue(chest.isFull());
+    }
+
+    // --- Remove Item Tests ---
 
     /**
-     * Tests if removing the full quantity of an item updates the chest
-     * correctly and removes the item completely.
+     * Tests removing the full quantity of an item.
      */
     @Test
     public void testRemoveFullQuantity() {
@@ -59,8 +72,7 @@ public class MChestOnMapTest {
     }
 
     /**
-     * Tests if removing a partial quantity of an item updates the chest
-     * correctly and retains the remaining quantity.
+     * Tests removing a partial quantity and retaining the remainder.
      */
     @Test
     public void testRemovePartialQuantity() {
@@ -73,29 +85,88 @@ public class MChestOnMapTest {
         assertEquals(six, chest.itemQuantity("emerald"));
     }
 
-    // isFull tests
+    /**
+     * Tests removing an item after multiple additions.
+     */
+    @Test
+    public void testRemoveAfterMultipleAdds() {
+        MChest chest = new MChestOnMap();
+        final int three = 3;
+        final int two = 2;
+        final int five = 5;
+        chest.addItem("arrow", three);
+        chest.addItem("arrow", two);
+        Pair<String, Integer> removed = chest.removeItem("arrow", five);
+        assertEquals(five, (int) removed.value());
+        assertFalse(chest.containsItem("arrow"));
+    }
+
+    // --- isFull Tests ---
 
     /**
-     * Tests if the chest correctly identifies as not full when the capacity is
-     * below the maximum limit.
+     * Tests isFull() when the chest is not full.
      */
     @Test
     public void testIsFullFalse() {
         MChest chest = new MChestOnMap();
-        final int size = 500;
-        chest.addItem("stone", size);
+        final int halfFull = 500;
+        chest.addItem("stone", halfFull);
         assertFalse(chest.isFull());
     }
 
     /**
-     * Tests if the chest correctly identifies as full when the maximum capacity
-     * is reached.
+     * Tests isFull() when the chest reaches its full capacity.
      */
     @Test
     public void testIsFullTrue() {
         MChest chest = new MChestOnMap();
-        final int size = 1000;
-        chest.addItem("stone", size);
+        final int full = 1000;
+        chest.addItem("stone", full);
         assertTrue(chest.isFull());
+    }
+
+    // --- containsItem Tests ---
+
+    /**
+     * Tests containsItem() when the item is in the chest.
+     */
+    @Test
+    public void testContainsItemTrue() {
+        MChest chest = new MChestOnMap();
+        final int one = 1;
+        chest.addItem("apple", one);
+        assertTrue(chest.containsItem("apple"));
+    }
+
+    /**
+     * Tests containsItem() when the item is not in the chest.
+     */
+    @Test
+    public void testContainsItemFalse() {
+        MChest chest = new MChestOnMap();
+        assertFalse(chest.containsItem("netherite"));
+    }
+
+    // --- itemQuantity Tests ---
+
+    /**
+     * Tests itemQuantity() for an existing item.
+     */
+    @Test
+    public void testItemQuantityExisting() {
+        MChest chest = new MChestOnMap();
+        final int four = 4;
+        chest.addItem("bread", four);
+        assertEquals(four, chest.itemQuantity("bread"));
+    }
+
+    /**
+     * Tests itemQuantity() for a non-existing item.
+     */
+    @Test
+    public void testItemQuantityNonexistent() {
+        MChest chest = new MChestOnMap();
+        final int zero = 0;
+        assertEquals(zero, chest.itemQuantity("obsidian"));
     }
 }
