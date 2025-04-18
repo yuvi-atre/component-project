@@ -53,7 +53,9 @@ public class MChestOnMap extends MChestSecondary {
      * @ensures this = {}
      */
     public MChestOnMap() {
+
         this.createNewRep();
+
     }
 
     /*
