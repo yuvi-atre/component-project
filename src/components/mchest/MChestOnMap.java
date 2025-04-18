@@ -1,3 +1,5 @@
+package components.mchest;
+
 import components.map.Map;
 import components.map.Map2;
 
@@ -51,7 +53,9 @@ public class MChestOnMap extends MChestSecondary {
      * @ensures this = {}
      */
     public MChestOnMap() {
+
         this.createNewRep();
+
     }
 
     /*
@@ -66,11 +70,11 @@ public class MChestOnMap extends MChestSecondary {
         assert item != null : "Violation of: item is not null";
         assert quantity > 0 : "Violation of: quantity > 0";
 
-        if (this.containsItem(item)) {
-            // If item exists, update the quantity
-            this.items.add(item, this.itemQuantity(item) + quantity);
+        if (this.items.hasKey(item)) {
+            int currentQty = this.items.value(item);
+            this.items.remove(item);
+            this.items.add(item, currentQty + quantity);
         } else {
-            // If item doesn't exist, add it to the chest
             this.items.add(item, quantity);
         }
     }
@@ -85,18 +89,21 @@ public class MChestOnMap extends MChestSecondary {
         assert this.containsItem(item) : "Violation of: item is in the chest";
 
         int currentQuantity = this.itemQuantity(item);
+        Map.Pair<String, Integer> removedPair;
 
         if (currentQuantity <= quantity) {
-            Map.Pair<String, Integer> removedPair = this.items.remove(item);
-            return removedPair;
+            removedPair = this.items.remove(item); // Fully remove the item
         } else {
-            // Not gonna lie I didn't know how to bypass not making an instance
-            // of Map.Pair so that's why it's scuffed
-            this.items.remove(item);
-            this.items.add(item, currentQuantity - quantity);
-            Map.Pair<String, Integer> removedPair = this.items.remove(item);
-            return removedPair;
+            // Remove original pair to access the key
+            Map.Pair<String, Integer> originalPair = this.items.remove(item);
+            this.items.add(originalPair.key(), currentQuantity - quantity);
+            // Return a dummy pair using a temporary map
+            Map<String, Integer> tempMap = new Map2<>();
+            tempMap.add(originalPair.key(), quantity);
+            removedPair = tempMap.remove(originalPair.key());
         }
+
+        return removedPair;
     }
 
     /**
@@ -136,6 +143,14 @@ public class MChestOnMap extends MChestSecondary {
     @Override
     public void clear() {
         this.items = new Map2<>(); // Reset the chest to an empty state
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Map<String, Integer> getItemsRep() {
+        return this.items;
     }
 
     // Implementing Standard<MChest> methods
