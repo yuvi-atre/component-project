@@ -4,31 +4,13 @@ import components.list.List;
 import components.list.List2;
 import components.map.Map;
 import components.map.Map.Pair;
-import components.map.Map2;
 
 /**
  * Abstract class that implements the secondary methods of MChest.
  */
 public abstract class MChestSecondary implements MChest {
 
-    /**
-     * Gives access to the internal items map.
-     *
-     * @return the internal Map representation of the chest
-     */
-    protected abstract Map<String, Integer> getItemsRep();
-
-    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
-    @Override
-    public Map<String, Integer> getItems() {
-        Map<String, Integer> itemsCopy = new Map2<>();
-        for (Pair<String, Integer> pair : this.getItemsRep()) {
-            itemsCopy.add(pair.key(), pair.value());
-        }
-        return itemsCopy;
-    }
-
-    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
+    //CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
     @Override
     public boolean canCraft(String... items) {
         assert items != null
@@ -41,13 +23,14 @@ public abstract class MChestSecondary implements MChest {
         return true;
     }
 
-    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
+    //CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
     @Override
     public int totalItems() {
         int total = 0;
         for (Pair<String, Integer> pair : this.getItems()) {
             total += pair.value();
-        }
+      
+
         return total;
     }
 
@@ -67,8 +50,8 @@ public abstract class MChestSecondary implements MChest {
     // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
     @Override
     public void clear() {
-        while (this.getItems().size() > 0) {
-            Pair<String, Integer> pair = this.getItems().removeAny();
+        Map<String, Integer> itemsCopy = this.getItems();
+        for (Pair<String, Integer> pair : itemsCopy) {
             this.removeItem(pair.key(), pair.value());
         }
     }
