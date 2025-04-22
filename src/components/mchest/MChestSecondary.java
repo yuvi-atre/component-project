@@ -29,7 +29,7 @@ public abstract class MChestSecondary implements MChest {
         int total = 0;
         for (Pair<String, Integer> pair : this.getItems()) {
             total += pair.value();
-      
+        }
 
         return total;
     }
