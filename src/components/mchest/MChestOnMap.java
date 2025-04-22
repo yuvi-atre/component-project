@@ -2,6 +2,7 @@ package components.mchest;
 
 import components.map.Map;
 import components.map.Map2;
+import components.map.Map.Pair;
 
 /**
  * {@code MChestOnMap} represents a Minecraft chest using a Map-based
@@ -38,9 +39,7 @@ public class MChestOnMap extends MChestSecondary {
      * Creator of initial representation.
      */
     private void createNewRep() {
-
         this.items = new Map2<>();
-
     }
 
     /*
@@ -53,9 +52,7 @@ public class MChestOnMap extends MChestSecondary {
      * @ensures this = {}
      */
     public MChestOnMap() {
-
         this.createNewRep();
-
     }
 
     /*
@@ -94,10 +91,8 @@ public class MChestOnMap extends MChestSecondary {
         if (currentQuantity <= quantity) {
             removedPair = this.items.remove(item); // Fully remove the item
         } else {
-            // Remove original pair to access the key
             Map.Pair<String, Integer> originalPair = this.items.remove(item);
             this.items.add(originalPair.key(), currentQuantity - quantity);
-            // Return a dummy pair using a temporary map
             Map<String, Integer> tempMap = new Map2<>();
             tempMap.add(originalPair.key(), quantity);
             removedPair = tempMap.remove(originalPair.key());
@@ -142,15 +137,19 @@ public class MChestOnMap extends MChestSecondary {
      */
     @Override
     public void clear() {
-        this.items = new Map2<>(); // Reset the chest to an empty state
+        this.createNewRep(); // Reset the chest to an empty state
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected Map<String, Integer> getItemsRep() {
-        return this.items;
+    public Map<String, Integer> getItems() {
+        Map<String, Integer> copy = new Map2<>();
+        for (Pair<String, Integer> pair : this.items) {
+            copy.add(pair.key(), pair.value());
+        }
+        return copy;
     }
 
     // Implementing Standard<MChest> methods
@@ -182,5 +181,4 @@ public class MChestOnMap extends MChestSecondary {
     public int compareTo(MChest other) {
         return Integer.compare(this.totalItems(), other.totalItems());
     }
-
 }
